@@ -341,6 +341,23 @@ int ModApiClient::l_get_privilege_list(lua_State *L)
 	}
 	return 1;
 }
+
+// Free the cursor
+int ModApiClient::l_free_cursor(lua_State *L)
+{
+	lua_pushboolean(L, true);
+
+	return 1;
+}
+
+// Lock the cursor
+int ModApiClient::l_lock_cursor(lua_State *L)
+{
+	lua_pushboolean(L,false);
+
+	return 1;
+}
+
 void ModApiClient::Initialize(lua_State *L, int top)
 {
 	API_FCT(get_current_modname);
@@ -366,4 +383,6 @@ void ModApiClient::Initialize(lua_State *L, int top)
 	API_FCT(get_node_def);
 	API_FCT(take_screenshot);
 	API_FCT(get_privilege_list);
+	API_FCT(free_cursor);
+	API_FCT(lock_cursor);
 }
